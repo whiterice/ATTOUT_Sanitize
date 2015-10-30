@@ -33,6 +33,10 @@ def save_csv(myfile, List1, List2):
         a.writerows(List2)
         a.writerows(List1)    
 
+def sanitize(List):
+    for each in List:
+        each.replace(" ", "")
+
 def main():
 
     parser = argparse.ArgumentParser(description='Sanitize ATTOUT Files')
