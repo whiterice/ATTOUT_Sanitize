@@ -5,11 +5,14 @@ import csv
 import xlwt
 import datetime as DT
 from xlrd import open_workbook
+from string import whitespace
+import re
 
 
 File_List=[]
 Heading=[]
 Body=[]
+BodyOut=[]
 
 
 def get_csv(myfile):
@@ -33,10 +36,6 @@ def save_csv(myfile, List1, List2):
         a.writerows(List2)
         a.writerows(List1)    
 
-def sanitize(List):
-    for row in List:
-        for each in row:
-            each.replace(" ", "")
 
 def main():
 
@@ -56,10 +55,11 @@ def main():
 
     print File_List
 
-    sanitize(Body)
 
     for each in File_List:
         get_csv(each)
+
+
 
     Workbook_FileName = '{!s}[{:%Y-%m-%d_%H%M%S}].csv'.format(Type, DT.datetime.now())
 
