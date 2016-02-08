@@ -14,6 +14,14 @@ Heading=[]
 Body=[]
 BodyOut=[]
 
+def sanitize(list1, list2):
+        i=0
+	for SubList in list1:
+                list2.append([])
+		for each in SubList:
+			#each = each.replace(' ', '')
+                        list2[i].append(each.split())
+		i=i+1
 
 def get_csv(myfile):
     i=0
@@ -59,12 +67,12 @@ def main():
     for each in File_List:
         get_csv(each)
 
-
+	sanitize(Body, BodyOut)
 
     Workbook_FileName = '{!s}[{:%Y-%m-%d_%H%M%S}].csv'.format(Type, DT.datetime.now())
 
     
-    save_csv(Workbook_FileName, Body, Heading)
+    save_csv(Workbook_FileName, BodyOut, Heading)
 
     print "\n...Complete \n\n{!s} Generated".format(Workbook_FileName)
  
